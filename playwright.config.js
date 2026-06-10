@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-import { trace } from 'node:console';
 
 
 
@@ -16,6 +15,7 @@ const config = ({
   },
 
   reporter: 'html',
+  workers: 1,
 
   use: {
     browserName: 'chromium',
