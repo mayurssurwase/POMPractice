@@ -31,5 +31,5 @@ test("API Test", async ({ page }) => {
     // Open Orders page
     await page.locator("button[routerlink*='myorders']").click();
 
-    await page.pause();
+    
 });

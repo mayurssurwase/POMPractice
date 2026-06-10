@@ -8,35 +8,35 @@ import { OrderHistoryPage } from '../POM/OrderHistoryPage';
 import parameterizeddata from '../Test Data/E2EPOMParameterizeTestData.json'
 
 
-for (let paradata of parameterizeddata){
-test(`End to end flow for ${paradata.productName}`, async ({ page }) => {
+for (let i of parameterizeddata){
+test(`End to end flow for ${i.productName}`, async ({ page }) => {
 
 
    //Login Page
    const loginPage = new LoginPage(page)
    await loginPage.navigateTopage()
-   await loginPage.validLogin(paradata.userName,paradata.password)
+   await loginPage.validLogin(i.userName,i.password)
 
    //Dashboard Page
 
    
 
    const dashboardpage = new DashboardPage(page)
-   await dashboardpage.searchAndaddProductToCart(paradata.productName)
+   await dashboardpage.searchAndaddProductToCart(i.productName)
    await dashboardpage.clickOnCartButton()
 
 // Checkout Page
 
    const checkoutPage = new CheckoutPage(page)
    await checkoutPage.waitForCheckoutPageToLoad()
-   await expect(checkoutPage.getCheckoutProductLocator(paradata.productName)).toBeVisible();
+   await expect(checkoutPage.getCheckoutProductLocator(i.productName)).toBeVisible();
    await checkoutPage.clickOnCheckoutButton()
 
    //Place Order
    const placeOrderPage = new PlaceorderPage(page)
-   await expect(placeOrderPage.getPlaceholderTextEmailLocator()).toHaveText(paradata.userName)
+   await expect(placeOrderPage.getPlaceholderTextEmailLocator()).toHaveText(i.userName)
 
-   await placeOrderPage.searchAndAddCountry(paradata.countryName)
+   await placeOrderPage.searchAndAddCountry(i.countryName)
    await placeOrderPage.clickOnPlaceOrder()
 
    //order Placed 

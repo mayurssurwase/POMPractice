@@ -2,7 +2,7 @@ import { test, expect, request} from '@playwright/test';
 
 
 
-test("API Test", async ({page}) => {
+test("APIUI Test", async ({page}) => {
 
    //Login using API
 
